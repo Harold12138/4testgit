@@ -1,5 +1,4 @@
 // Databricks notebook source
-1-1
-
+print("Hello")
 // COMMAND ----------
 
