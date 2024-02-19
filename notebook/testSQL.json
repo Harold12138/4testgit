@@ -1,0 +1,269 @@
+{
+	"name": "testSQL",
+	"properties": {
+		"nbformat": 4,
+		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "testspark32",
+			"type": "BigDataPoolReference"
+		},
+		"sessionProperties": {
+			"driverMemory": "56g",
+			"driverCores": 8,
+			"executorMemory": "56g",
+			"executorCores": 8,
+			"numExecutors": 2,
+			"runAsWorkspaceSystemIdentity": false,
+			"conf": {
+				"spark.dynamicAllocation.enabled": "false",
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "1e3565bf-5f0e-4e27-9fba-1f0945b8b293"
+			}
+		},
+		"metadata": {
+			"saveOutput": true,
+			"synapse_widget": {
+				"version": "0.1"
+			},
+			"enableDebugMode": false,
+			"kernelspec": {
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
+			},
+			"language_info": {
+				"name": "sql"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/454f7211-1b29-4644-9e6b-3a5987204f0d/resourceGroups/synapse-aue-rg/providers/Microsoft.Synapse/workspaces/lzysynpaseauews/bigDataPools/testspark32",
+				"name": "testspark32",
+				"type": "Spark",
+				"endpoint": "https://lzysynpaseauews.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/testspark32",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net",
+					"authHeader": null
+				},
+				"sparkVersion": "3.3",
+				"nodeCount": 10,
+				"cores": 8,
+				"memory": 56,
+				"extraHeader": null
+			},
+			"sessionKeepAliveTimeout": 30
+		},
+		"cells": [
+			{
+				"cell_type": "code",
+				"metadata": {
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"spark.sql(\"CREATE DATABASE IF NOT EXISTS mydb\")\r\n",
+					""
+				],
+				"execution_count": 1
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"from pyspark.sql.types import StructType, StructField, StringType, IntegerType\r\n",
+					"\r\n",
+					"schema = StructType([\r\n",
+					"   StructField(\"name\", StringType(), True),\r\n",
+					"   StructField(\"age\", IntegerType(), True),\r\n",
+					"   StructField(\"bio\", StringType(), True)\r\n",
+					"])\r\n",
+					""
+				],
+				"execution_count": 2
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"data = [\r\n",
+					"  (\"Alice\", 25, \"I like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and books\"),\r\n",
+					"  (\"Bob\", 30, \"I enjoy hiking and bikingI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and booksI like cats and books\"),\r\n",
+					"  (\"Charlie\", 35, \"I love music and movies\")\r\n",
+					"]\r\n",
+					"\r\n",
+					"df = spark.createDataFrame(data,schema)\r\n",
+					"\r\n",
+					"df.write.mode(\"overwrite\").saveAsTable(\"mydb.mytable\")\r\n",
+					""
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df.write.mode(\"overwrite\").format(\"delta\").save(\"abfss://test0001@teststoragelzy01.dfs.core.windows.net/mytable01\")"
+				],
+				"execution_count": 5
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df11 = spark.read.load(\"abfss://test0001@teststoragelzy01.dfs.core.windows.net/mytable01\")\r\n",
+					"df11.show()"
+				],
+				"execution_count": 6
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"spark.sql(\"SELECT * FROM mydb.mytable\").show()"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"create or replace table mydb.project_test02\r\n",
+					"\r\n",
+					"    using delta\r\n",
+					"    location 'abfss://test0001@teststoragelzy01.dfs.core.windows.net/mytable01'\r\n",
+					"    TBLPROPERTIES (delta.autoOptimize.optimizeWrite = true)\r\n",
+					"    as\r\n",
+					"\r\n",
+					"    select cast(bio as varchar(8000)) as testlength, length(bio) as length\r\n",
+					"\r\n",
+					"    from mydb.mytable\r\n",
+					"\r\n",
+					"    order by length(testlength) DESC\r\n",
+					"\r\n",
+					"    limit 1"
+				],
+				"execution_count": 8
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"SELECT * FROM mydb.project_test"
+				],
+				"execution_count": 13
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"SELECT * FROM mydb.project_test02"
+				],
+				"execution_count": 9
+			}
+		]
+	}
+}

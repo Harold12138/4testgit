@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-custstgacct--lzysynpaseauews-teststoragelzy01",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/454f7211-1b29-4644-9e6b-3a5987204f0d/resourceGroups/synapse-managed-vnet-rg/providers/Microsoft.Storage/storageAccounts/teststoragelzy01",
+		"groupId": "dfs",
+		"fqdns": [
+			"teststoragelzy01.dfs.core.windows.net"
+		]
+	}
+}

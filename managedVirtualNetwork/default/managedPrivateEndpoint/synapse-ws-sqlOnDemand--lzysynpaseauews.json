@@ -1,0 +1,10 @@
+{
+	"name": "synapse-ws-sqlOnDemand--lzysynpaseauews",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/454f7211-1b29-4644-9e6b-3a5987204f0d/resourceGroups/synapse-aue-rg/providers/Microsoft.Synapse/workspaces/lzysynpaseauews",
+		"groupId": "sqlOnDemand",
+		"fqdns": [
+			"lzysynpaseauews-ondemand.c7870ffd-4c0e-45bc-b6a0-3c00e61dadbd.sql.azuresynapse.net"
+		]
+	}
+}
